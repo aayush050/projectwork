@@ -1,20 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule,routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-
+import { LoginComponent } from './login/login.component';
+import { DesignComponent } from './design/design.component';
+import { WebComponent } from './web/web.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SchoolComponent } from './school/school.component';
+import { CollegeComponent } from './college/college.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ProjectworkService} from './projectwork.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    DesignComponent,
+    WebComponent,
+    DashboardComponent,
+    SchoolComponent,
+    CollegeComponent,
+    ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    routingComponents,
+    FormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [ProjectworkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
