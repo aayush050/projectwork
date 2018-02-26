@@ -5,40 +5,72 @@ import { Router } from '@angular/router';
   selector: 'app-college',
   template: `
   
-        
-     <p style="text-align:center" >
-      
-     <label align="center">College Name</label>
-     <input type="text" #user align="center" required><br>
-     <label align="center">Roll Number</label>
-  <input type="text" #user align="center" required><br>
-  <label align="center">Branch</label>
-  <input type="text" #user align="center" required><br>
-  <label align="center">Percentage Marks</label>
-  <input type="text" #user align="center" required><br>
-  <button type="submit">SAVE </button>
+  <p class="button" *ngIf="end">
+  <label align="center">College Name  :</label>{{this.cname}}<br>
+  <label align="center">Roll Number   :</label>{{this.roll}}<br>
+  <label align="center">Branch  :</label>{{this.branch}}<br>
+  <label align="center">CGPA  :</label>{{this.pmarks}}<br>
+ 
+  </p>
+  
+<div class="button" *ngIf="start">
+    
+  <label align="center">College Name</label><input type="text" [(ngModel)]="cname" placeholder="Enter Your College Name" align="center" ><br>
+  <label align="center">Roll Number</label><input type="text" [(ngModel)]="roll" placeholder="Enter Your Roll Number"  align="center" ><br>
+  <label align="center">Branch</label><input type="text" [(ngModel)]="branch" placeholder="Enter Your Branch" align="center" ><br>
+  <label align="center">CGPA</label><input type="number" [(ngModel)]="pmarks" placeholder="Enter Your Percentage Marks" align="center"><br>
+  <button type="submit" (click)="gotonewcollege()">SAVE </button>
    
-   </p>
+   </div>
     
   `,
-  styles: []
+  styles: [
+`
+.button{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+`
+
+  ]
 })
 export class CollegeComponent implements OnInit {
 
+  public start=true;
+  public end=false;
+  public cname;
+  public roll;
+  public branch;
+  public pmarks;
   constructor(private route: Router) { }
 
   ngOnInit() {
   }
-  gotoprofile()
+  
+  gotonewcollege()
+{
+  if(this.cname =='')
   {
-    this.route.navigate(['/web/profile']);
+    window.alert("Enter Name");
   }
-  gotoschool()
+  if(this.roll =='' )
   {
-    this.route.navigate(['/web/school']);
+    window.alert("Enter Roll Number");
   }
-  gotocollege()
+  if(this.branch =='')
   {
-    this.route.navigate(['/web/college']);
+    window.alert("Enter Branch");
   }
+  if(this.pmarks =='')
+  {
+    window.alert("Enter Marks");
+  }
+  if(this.cname!='' && this.roll!=null && this.branch!= ' ' && this.pmarks!='')
+  {
+    this.start=false;
+  this.end=true;
+  }
+}
 }

@@ -13,8 +13,9 @@ import { CollegeComponent } from './college/college.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ProjectworkService} from './projectwork.service'
-
+import {ProjectworkService} from './projectwork.service';
+import {ProfileService} from './profile.service';
+import {SchoolService} from'./school.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import {ProjectworkService} from './projectwork.service'
     FormsModule,
     CommonModule
   ],
-  providers: [ProjectworkService],
+  providers: [ProjectworkService,ProfileService,SchoolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,8 +9,8 @@ import { ProjectworkService } from '../projectwork.service';
  <h2> LOGIN</h2><br>
    <table border=1 height="200" width="400" >
    <div align="center" top-margin ="100">          
-  <label align="center">Username</label><input type="text" [(ngModel)]="id" align="center"><br>
-<label align="center">Password</label><input type= "password" [(ngModel)]="user" align="center"><br>
+<label align="center">Username</label><input type="text" [(ngModel)]="id" align="center" placeholder="Enter Username"><br>
+<label align="center">Password</label><input type= "password" [(ngModel)]="user" align="center" placeholder="Enter Password"><br>
 <button (click)="goToMenu();showname()"  type="submit"  >SUBMIT</button>
 </div>
 </table>
