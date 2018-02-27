@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule,routingComponents } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,10 +12,12 @@ import { SchoolComponent } from './school/school.component';
 import { CollegeComponent } from './college/college.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {ProjectworkService} from './projectwork.service';
-import {ProfileService} from './profile.service';
-import {SchoolService} from'./school.service';
+import { FormsModule } from '@angular/forms';
+import { ProjectworkService } from './projectwork.service';
+import { ProfileService } from './profile.service';
+import { SchoolService } from './school.service';
+import { CollegeService } from './college.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import {SchoolService} from'./school.service';
     SchoolComponent,
     CollegeComponent,
     ProfileComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import {SchoolService} from'./school.service';
     FormsModule,
     CommonModule
   ],
-  providers: [ProjectworkService,ProfileService,SchoolService],
+  providers: [ProjectworkService, ProfileService, SchoolService, CollegeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProfileService {
 
-profile={"name":'', "age":'', "fname":'',"mname":'' };
+  profile = { "name": '', "age": '', "fname": '', "mname": '' };
 
-  constructor() {}
-  getprofile()
-  {
-     return this.profile;
+  constructor() { }
+  getprofile() {
+    return this.profile;
   }
+toggle()
+{
+  return true;
+}
 
-  
 }

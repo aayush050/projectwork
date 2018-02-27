@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProjectworkService {
 
-   username='';
+  username = '';
   constructor() { }
-  getdata(){
+  getdata() {
 
-  return this.username;
+    return this.username;
   }
 }

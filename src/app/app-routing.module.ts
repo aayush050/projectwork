@@ -9,15 +9,17 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
-{path:'', redirectTo:'login',pathMatch:'full'},
-{path:'login', component:LoginComponent},
-{path: 'web', component: WebComponent,
-children:[
-  {path: 'dashboard',component: DashboardComponent},
-  {path: 'school',component: SchoolComponent},
-  {path: 'college',component: CollegeComponent},
-  {path: 'profile',component:ProfileComponent}
-]}
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'web', component: WebComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'school', component: SchoolComponent },
+      { path: 'college', component: CollegeComponent },
+      { path: 'profile', component: ProfileComponent }
+    ]
+  }
 ];
 
 @NgModule({

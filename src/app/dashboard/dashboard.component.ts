@@ -6,7 +6,7 @@ import { ProfileService } from '../profile.service';
 @Component({
   selector: 'app-dashboard',
   template: `
-<p *ngIf="data.name !=' '" class="butto" >
+<p *ngIf="data.name !=''" class="butto" >
 <label align="center">My Name    :</label>{{data.name}}<br>
 <label align="center">Age        :</label>{{data.age}}<br>
 </p>
@@ -14,17 +14,18 @@ import { ProfileService } from '../profile.service';
  <br><br>
 
   <p  class="button" >
-     <button *ngIf="data.name ==' '" type="submit" (click)="gotonewprofile()">ADD MY DETAILS</button>
+     <button *ngIf="data.name ==''" type="submit" (click)="gotonewprofile()">ADD MY DETAILS</button>
     </p>
   `,
   styles: [
-`
+    `
       .button{
         position: fixed;
         top: 50%;
         left: 50%;
         margin-top: -50px;
         margin-left: -100px;
+        
   }
   .butto{
     position: fixed;
@@ -37,20 +38,20 @@ import { ProfileService } from '../profile.service';
 })
 export class DashboardComponent implements OnInit {
 
-public data;
-  constructor(private route:Router,private proservice: ProjectworkService,private profservice: ProfileService) { }
+  public data;
+  constructor(private route: Router, private proservice: ProjectworkService, private profservice: ProfileService) { }
 
   ngOnInit() {
-this.data=this.profservice.profile;
+    this.data = this.profservice.profile;
   }
 
 
-gotonewprofile()
-{
+  gotonewprofile() {
 
-  this.route.navigate(['/web/profile']);
+    this.route.navigate(['/web/profile']);
 
 
-}
+  }
+ 
 }
 
