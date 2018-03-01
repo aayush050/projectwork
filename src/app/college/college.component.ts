@@ -63,6 +63,10 @@ export class CollegeComponent implements OnInit {
     }
     else{
       this.editable=false;
+      this.cname = this.colgService.college.cname;
+      this.roll = this.colgService.college.roll;
+      this.branch = this.colgService.college.branch;
+      this.pmarks = this.colgService.college.pmarks;
     }
   }
 

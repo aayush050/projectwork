@@ -58,6 +58,9 @@ export class SchoolComponent implements OnInit {
     }
     else{
       this.editable=false;
+      this.sname=this.schService.school.sname;
+      this.address=this.schService.school.address;
+      this.marks=this.schService.school.marks;
     }
   }
 

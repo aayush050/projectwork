@@ -7,7 +7,8 @@ export class ProfileService {
 
   constructor() { }
   getprofile() {
-    return this.profile;
+    let localStorageItem = JSON.parse(localStorage.getItem('profile'));
+    return localStorageItem==null?[] : localStorageItem.profile;
   }
 toggle()
 {

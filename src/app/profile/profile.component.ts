@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
 
 
   public name = '';
-  public age: '';
+  public age= '';
   public fname = '';
   public mname = '';
   public data;
@@ -57,9 +57,16 @@ export class ProfileComponent implements OnInit {
     this.data = this.proservice.profile;
     if (this.data.name === '') {
       this.editable = true;
+      this.name = this.proservice.profile.name;
+
     }
     else {
       this.editable = false;
+      this.name = this.proservice.profile.name;
+      this.age = this.proservice.profile.age;
+      this.fname = this.proservice.profile.fname;
+      this.mname = this.proservice.profile.mname;
+
     }
   }
 
