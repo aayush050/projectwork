@@ -1,0 +1,93 @@
+<div class="button" *ngIf="!editable">
+  <h1> YOUR DETAILS </h1>
+  <label align="center">My Name    :</label>{{data.name}}<br><br>
+  <label align="center">Age        :</label>{{data.age}}<br><br>
+  <label align="center">Father's Name    :</label>{{data.fname}}<br><br>
+  <label align="center">Mother's Name       :</label>{{data.mname}}<br><br>
+  <button type="submit" (click)="update()">UPDATE</button>
+  </div>
+  
+<div  *ngIf= "editable">
+<h1 class="heading"> ENTER YOUR DETAILS </h1>
+<label class="label" >My Name</label><input class="button" type="text" [(ngModel)]="name"  placeholder="Enter Your Name" ><br>
+<label class="labe">Age</label><input class="butto" type="text" [(ngModel)]="age"  min="0" placeholder="Enter Your Age"><br>
+<label class="lab">Father's Name</label><input class="butt" type="text" [(ngModel)]="fname"  placeholder="Enter Your Father's Name"><br>
+<label class="la">Mother's Name</label><input class="but" type="text" [(ngModel)]="mname"  placeholder="Enter Your Mother's Name"><br><br>
+<button type="submit" class="save" (click)="gotonewdashboard()">SAVE </button>
+ </div>
+ 
+  
+`,
+  styles: [
+    `
+    .heading{
+      position: fixed;
+      top: 40%;
+      left: 40%;
+      margin-top: -155px;
+      margin-left: -100px;
+    }
+
+    .button{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -155px;
+      margin-left: -100px;
+    }
+    .butto {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -120px;
+      margin-left: -100px;
+    }
+    .butt {
+        position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -85px;
+      margin-left: -100px;
+      }
+      .but {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -100px;
+      }
+      .label{
+        position: fixed;
+        top: 50%;
+        left: 40%;
+        margin-top: -155px;
+        margin-left: -80px;
+      }
+      .labe{
+        position: fixed;
+        top: 50%;
+        left: 40%;
+        margin-top: -120px;
+        margin-left: -80px;
+      }
+      .lab{
+        position: fixed;
+        top: 50%;
+        left: 40%;
+        margin-top: -85px;
+        margin-left: -80px;
+      }
+      .la{
+        position: fixed;
+        top: 50%;
+        left: 40%;
+        margin-top: -50px;
+        margin-left: -80px;
+      }
+      .save{
+        position: fixed;
+        top: 63%;
+        left: 40%;
+        margin-top: -80px;
+        margin-left: -10px;
+      }

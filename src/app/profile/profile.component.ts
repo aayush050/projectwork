@@ -5,34 +5,40 @@ import { ProfileService } from '../profile.service';
 @Component({
   selector: 'app-profile',
   template: `
-  <div class="button" *ngIf="!editable">
-  <h1> YOUR DETAILS </h1>
-  <label align="center">My Name    :</label>{{data.name}}<br><br>
-  <label align="center">Age        :</label>{{data.age}}<br><br>
-  <label align="center">Father's Name    :</label>{{data.fname}}<br><br>
-  <label align="center">Mother's Name       :</label>{{data.mname}}<br><br>
-  <button type="submit" (click)="update()">UPDATE</button>
-  </div>
   
-<div class="button" *ngIf= "editable">
-<h1> ENTER YOUR DETAILS </h1>
-<label align="center">MyName</label><input type="text" [(ngModel)]="name" align="center" placeholder="Enter Your Name" ><br>
-<label align="center">MyAge</label><input type="number" [(ngModel)]="age" align="center" min="0" placeholder="Enter Your Age"><br>
-<label align="center">Father's Name</label><input type="text" [(ngModel)]="fname" align="center" placeholder="Enter Your Father's Name"><br>
-<label align="center">Mother's Name</label><input type="text" [(ngModel)]="mname" align="center" placeholder="Enter Your Mother's Name"><br><br>
-<button type="submit" (click)="gotonewdashboard()">SAVE </button>
- </div>
- 
-  
-`,
+<div class="form" *ngIf="editable">
+<h2> ENTER YOUR DETAILS </h2>
+<label>My Name:</label><input  [(ngModel)]=name type="text" ><br>
+<label>My Age:</label><input  [(ngModel)]=age type="number"><br>
+<label>Father's Name:</label><input  [(ngModel)]=fname type="text"><br>
+<label>Mother's Name:</label><input  [(ngModel)]=mname type="text"><br>
+<button (click)="gotonewdashboard()" type="submit">Save</button>
+</div>
+<div class="form" *ngIf="!editable">
+<label>Name: </label>{{data.name}}<br>
+<label>Age: </label>{{data.age}}<br>
+<label>Father's Name:</label> {{data.fname}}<br>
+<label>Mother's Name: </label>{{data.mname}}<br>
+<button (click)="update()" type="submit">Update</button>
+</div>
+
+  `,
   styles: [
     `
-    .button{
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      margin-top: -50px;
-      margin-left: -100px;
+    .form
+    {
+      position: relative;
+      left: 250px;
+      top:250px;
+       width: 400px;
+    }
+    
+
+    label { float: left; width: 150px; }
+
+    input { float: left; width: 200px; }
+   p { float: left; width: 200px; }
+   
     `
   ]
 })
@@ -40,7 +46,7 @@ export class ProfileComponent implements OnInit {
 
 
   public name = '';
-  public age: any;
+  public age: '';
   public fname = '';
   public mname = '';
   public data;
@@ -67,7 +73,7 @@ export class ProfileComponent implements OnInit {
         "fname": this.fname
       }
 
-    if (this.name != '' && this.age != null && this.fname != ' ' && this.mname != '') {
+    if (this.name != '' && this.age !=null && this.fname != '' && this.mname != '') {
 
       this.proservice.profile = stud;
       this.data = this.proservice.profile;

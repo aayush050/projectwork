@@ -6,68 +6,45 @@ import { SchoolService } from '../school.service';
 @Component({
   selector: 'app-web',
   template: `
-  <table border =0 width="100%" height="100%" fixed>
-  <tr >
-     <th class="logo" >
-    <img width="100" src="https://www.seoclerk.com/pics/551103-1TOqFD1502285018.jpg">
-    </th>
-    <th class="username" width = "90%" colspan ="2"><p style="text-align:right">{{this.username}}</p></th>
-  </tr>
-  <tr>
-     <td height="20" >
-       <button (click)="gotoprofile()">PROFILE</button>
-     </td>
-    
-     <td colspan ="2" rowspan="5" height="500" class="router" >
-    <p style="text-align:center" >
-      
-    
-     
-     
-       <router-outlet></router-outlet>
-     
-     </p>  
-      
-    
-    </td>
-                
-  </tr>
-  <tr>
-    <td height="20"> <button (click)="gotoschool()">SCHOOL</button> </td>
-  </tr>
-  <tr>
-    <td height="20"> <button (click)="gotocollege()">COLLEGE</button></td>
-  </tr>
-  <tr>
-   <td height="20"><button (click)="gotodashboard()">DASHBOARD</button></td>
-  </tr>
-  <tr>
-  <td></td>
-  <tr>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <body>
   
-  </table>  
-  `,
-  styles: [
-
-    `
-
-.router{ background-color:#602020}
-
-
-
-.logo,.username{ background-color:white}
-
-
-
-`
-
-  ]
-
-
-
-
-
-})
+  <!-- Sidebar -->
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+  <img class="left" src="https://www.seoclerk.com/pics/551103-1TOqFD1502285018.jpg" width="50" height="50"><br><br><br>
+  
+    <a (click)="gotoprofile()" class="w3-bar-item w3-button">Profile</a>
+    <a (click)="gotoschool()" class="w3-bar-item w3-button">School</a>
+    <a (click)="gotocollege()" class="w3-bar-item w3-button">College</a>
+    <a (click)="gotodashboard()" class="w3-bar-item w3-button">Dashboard</a>
+  </div>
+  
+  
+  <div style="margin-left:25%">
+  
+  <div class="w3-container w3-teal">
+  <h2 >{{this.username}}</h2>
+    </div>
+    <button class="button" (click)="logout()">Logout</button>
+   
+  
+      <router-outlet></router-outlet>
+    `,
+    styles: [
+      `.button{
+        float:right;
+      }
+      h2
+      {
+  float:right;
+      }
+      .left{
+        float:left;
+      }
+  
+     `
+    ]
+  })
 export class WebComponent implements OnInit {
   public username = '';
 
@@ -89,4 +66,8 @@ export class WebComponent implements OnInit {
   gotodashboard() {
     this.route.navigate(['dashboard'], { relativeTo: this.routerr });
   }
-}
+  logout()
+
+{
+  this.route.navigate(['/login']);
+}}

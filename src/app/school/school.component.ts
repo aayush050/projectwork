@@ -5,36 +5,40 @@ import { SchoolService } from '../school.service';
 @Component({
   selector: 'app-school',
   template: `
-  <div class="button" *ngIf="!editable">
-  <h1> SCHOOL DETAILS </h1>
-  <label align="center">School Name  :</label>{{data.sname}}<br><br>
-  <label align="center">Address   :</label>{{data.address}}<br><br>
-  <label align="center">Percentage Marks  :</label>{{data.marks}}<br><br>
-  <button type="submit" (click)="update()">UPDATE</button>
-  
+  <div class="form" *ngIf="editable">
+  <h2> ENTER SCHOOL DETAILS </h2>
+  <label>School Name:</label><input  [(ngModel)]=sname type="text" ><br>
+  <label>Address:</label><input  [(ngModel)]=address type="text"><br>
+  <label> Marks:</label><input  [(ngModel)]=marks type="number"><br>
+  <button (click)="gotonewschool()" type="submit">Save</button>
+  </div>
+  <div class="form" *ngIf="!editable">
+  <label>School Name: </label>{{data.sname}}<br>
+  <label>Address:</label> {{data.address}}<br>
+  <label> Marks: </label>{{data.marks}}<br>
+  <button (click)="update()" type="submit">Update</button>
   </div>
   
-<div class="button" *ngIf="editable">
-<h1> ENTER SCHOOL DETAILS </h1>  
-  <label align="center">School Name</label><input type="text" [(ngModel)]="sname" align="center" placeholder="Enter Your School Name" ><br>
-  <label align="center">Address</label><input type="text" [(ngModel)]="address" align="center" placeholder="Enter Your Address" ><br>
-  <label align="center">Percentage Marks</label><input type="number" [(ngModel)]="marks" min="0" align="center" placeholder="Enter Your Marks" ><br><br>
-  <button type="submit" (click)="gotonewschool()">SAVE </button>
-  </div>
-  
-    
-  `,
-  styles: [
-    `
-    .button{
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      margin-top: -50px;
-      margin-left: -100px;
+    `,
+    styles: [
       `
-  ]
-})
+      .form
+      {
+        position: relative;
+        left: 250px;
+        top:250px;
+         width: 400px;
+      }
+      
+  
+      label { float: left; width: 150px; }
+  
+      input { float: left; width: 200px; }
+     p { float: left; width: 200px; }
+  `
+  
+    ]
+  })
 export class SchoolComponent implements OnInit {
 
 
@@ -66,23 +70,18 @@ export class SchoolComponent implements OnInit {
       "marks": this.marks
     }
 
-    if (this.sname == '') {
-      window.alert("Enter Name");
-    }
-    if (this.address == '') {
-      window.alert("Enter Address");
-    }
-    if (this.marks == '') {
-      window.alert("Enter Marks");
-    }
+    
 
-    if (this.sname != '' && this.address != null && this.marks != ' ') {
+    if (this.sname != '' && this.address != '' && this.marks != null) {
       this.schService.school = stud;
       this.data = this.schService.school;
       
       this.editable=false;
       
   
+    }
+    else{
+      window.alert("Enter Data Carefully");
     }
   }
   update()
