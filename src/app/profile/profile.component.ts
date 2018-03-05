@@ -54,22 +54,25 @@ export class ProfileComponent implements OnInit {
   constructor(private route: Router, private proservice: ProfileService) { }
 
   ngOnInit() {
-    this.data = this.proservice.profile;
-    if (this.data.name === '') {
+    this.data=this.proservice.getprofile();
+    if (this.data.name == '') {
       this.editable = true;
-      this.name = this.proservice.profile.name;
-
+    
     }
     else {
       this.editable = false;
-      this.name = this.proservice.profile.name;
-      this.age = this.proservice.profile.age;
-      this.fname = this.proservice.profile.fname;
-      this.mname = this.proservice.profile.mname;
+      this.initdata();
 
     }
   }
-
+initdata()
+{
+      this.name = this.data.name;
+      this.age = this.data.age;
+      this.fname = this.data.fname;
+      this.mname = this.data.mname;
+   
+}
   gotonewdashboard() {
 
     let stud =
@@ -81,17 +84,22 @@ export class ProfileComponent implements OnInit {
       }
 
     if (this.name != '' && this.age !=null && this.fname != '' && this.mname != '') {
-
-      this.proservice.profile = stud;
-      this.data = this.proservice.profile;
+     
+      
+      
+      this.proservice.setprofile(stud);
+      this.data=this.proservice.getprofile();
       this.editable = false;
+  
+      
+    
     }
     else {
       window.alert("Enter Data Carefully");
     }
   }
-  update() {
-
-    this.editable = true;
+  update() {   
+    this.initdata();
+  this.editable = true;
   }
 }

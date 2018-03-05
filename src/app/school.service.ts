@@ -5,11 +5,21 @@ export class SchoolService {
 
   school = { "sname": '', "address": '', "marks": '' };
 
-
+public data;
   constructor() { }
 
-  getschool() {
-    return this.school;
+
+
+
+  setschool(newdata) {
+    this.data = newdata;
+    localStorage.setItem('MY_SCHOOL_DATA',JSON.stringify(newdata));
+
+  }
+
+  getschool()
+  { 
+    return  JSON.parse(localStorage.getItem('MY_SCHOOL_DATA')) || {};
   }
 
 }

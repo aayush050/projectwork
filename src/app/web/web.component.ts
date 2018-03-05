@@ -69,5 +69,6 @@ export class WebComponent implements OnInit {
   logout()
 
 {
+  localStorage.clear();
   this.route.navigate(['/login']);
 }}

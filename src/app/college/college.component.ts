@@ -50,26 +50,28 @@ export class CollegeComponent implements OnInit {
   public branch = '';
   public pmarks: any;
   public data;
-  public editable= true;
-  
+  public editable = true;
+
   constructor(private route: Router, private colgService: CollegeService) { }
 
   ngOnInit() {
-
-    this.data = this.colgService.college;
-    if(this.data.cname==='')
-    {
-      this.editable=true;
+    this.data=this.colgService.college;
+    this.data = this.colgService.getcollege();
+    if (this.data.cname === '') {
+      this.editable = true;
     }
-    else{
-      this.editable=false;
-      this.cname = this.colgService.college.cname;
-      this.roll = this.colgService.college.roll;
-      this.branch = this.colgService.college.branch;
-      this.pmarks = this.colgService.college.pmarks;
+    else {
+      this.editable = false;
+      this.initdata();
     }
   }
-
+initdata()
+{
+      this.cname = this.data.cname;
+      this.roll = this.data.roll;
+      this.branch = this.data.branch;
+      this.pmarks = this.data.pmarks;
+}
   gotonewcollege() {
 
 
@@ -82,19 +84,20 @@ export class CollegeComponent implements OnInit {
     }
 
     if (this.cname != '' && this.roll != null && this.branch != ' ' && this.pmarks != null) {
-      this.colgService.college = stud;
-      this.data = this.colgService.college;
-
-      this.editable=false;
-   
+      
+      this.colgService.setcollege(stud);
+      this.colgService.college=stud;
+      this.data=this.colgService.college;
+      this.editable = false;
+      
     }
-    else{
+    else {
       window.alert("Enter Data Carefully");
     }
   }
   update() {
 
-    
-  this.editable=true;
-}
+this.initdata();
+    this.editable = true;
+  }
 }

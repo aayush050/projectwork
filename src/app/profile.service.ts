@@ -4,15 +4,22 @@ import { Injectable } from '@angular/core';
 export class ProfileService {
 
   profile = { "name": '', "age": '', "fname": '', "mname": '' };
-
+  public data;
   constructor() { }
-  getprofile() {
-    let localStorageItem = JSON.parse(localStorage.getItem('profile'));
-    return localStorageItem==null?[] : localStorageItem.profile;
+
+
+  setprofile(newdata) {
+    this.data = newdata;
+    localStorage.setItem('MY_PROFILE_DATA',JSON.stringify(newdata));
+
   }
-toggle()
-{
-  return true;
-}
+
+  getprofile()
+  {
+     return JSON.parse(localStorage.getItem('MY_PROFILE_DATA')) || {};
+  }
+  
+  
+
 
 }
