@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   showname() {
     if (this.id == this.user) {
       this.proservice.username = this.id;
+      this.proservice.setproject(this.id);
     }
   }
   goToMenu(user, pass) {

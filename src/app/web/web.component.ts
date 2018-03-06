@@ -51,7 +51,7 @@ export class WebComponent implements OnInit {
   constructor(private routerr: ActivatedRoute, private route: Router, private proservice: ProjectworkService) { }
 
   ngOnInit() {
-    this.username = this.proservice.getdata();
+    this.username = this.proservice.getproject();
   }
 
   gotoprofile() {
