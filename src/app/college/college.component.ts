@@ -57,7 +57,7 @@ export class CollegeComponent implements OnInit {
   ngOnInit() {
     this.data=this.colgService.college;
     this.data = this.colgService.getcollege();
-    if (this.data.cname === '') {
+    if (this.data.cname === '' || this.data.cname == undefined) {
       this.editable = true;
     }
     else {

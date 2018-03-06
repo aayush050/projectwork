@@ -53,7 +53,7 @@ export class SchoolComponent implements OnInit {
   ngOnInit() {
     this.data = this.schService.school;
     this.data = this.schService.getschool();
-    if(this.data.sname==='')
+    if(this.data.sname==='' || this.data.sname == undefined)
     {
       this.editable=true;
     }

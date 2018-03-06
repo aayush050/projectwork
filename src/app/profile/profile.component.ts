@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.data=this.proservice.getprofile();
-    if (this.data.name == '') {
+    if (this.data.name == ''  || this.data.name == undefined) {
       this.editable = true;
     
     }
